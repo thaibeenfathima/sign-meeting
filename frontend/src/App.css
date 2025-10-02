@@ -1,0 +1,408 @@
+/* Additional custom styles for the video calling app */
+
+.video-grid {
+  display: grid;
+  gap: 1rem;
+  height: 100%;
+}
+
+.video-grid.single {
+  grid-template-columns: 1fr;
+}
+
+.video-grid.dual {
+  grid-template-columns: 1fr 1fr;
+}
+
+.video-grid.multiple {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  background-color: #1f2937;
+}
+
+.video-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.subtitle-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.subtitle-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+.subtitle-language {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-top: 0.25rem;
+}
+
+/* Sign Language Avatar Styles */
+.sign-avatar-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 16rem;
+  height: 12rem;
+  background: #1f2937;
+  border-radius: 0.5rem;
+  border: 2px solid #374151;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.sign-avatar-container.dragging {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.sign-avatar-header {
+  background: #374151;
+  padding: 0.5rem;
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sign-avatar-title {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.sign-avatar-controls {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.sign-avatar-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: background-color 0.2s;
+}
+
+.sign-avatar-btn.minimize {
+  background: #fbbf24;
+  color: #92400e;
+}
+
+.sign-avatar-btn.close {
+  background: #ef4444;
+  color: white;
+}
+
+.sign-avatar-btn:hover {
+  opacity: 0.8;
+}
+
+.sign-avatar-content {
+  height: calc(100% - 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111827;
+  position: relative;
+}
+
+.sign-avatar-figure {
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, #4f46e5 0%, #7c3aed 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sign-avatar-animation {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-gesture {
+  font-size: 3rem;
+  animation: signGesture 2s ease-in-out infinite;
+}
+
+@keyframes signGesture {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(-5deg); }
+  50% { transform: translateY(-5px) rotate(5deg); }
+  75% { transform: translateY(-15px) rotate(-2deg); }
+}
+
+.sign-text-display {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  text-align: center;
+  max-height: 2rem;
+  overflow: hidden;
+}
+
+/* Chat Panel Styles */
+.chat-message {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.chat-message.own {
+  background: #3b82f6;
+  color: white;
+  margin-left: auto;
+}
+
+.chat-message.other {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.chat-message-header {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-bottom: 0.25rem;
+}
+
+.chat-message-text {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.chat-message-translation {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin-top: 0.25rem;
+  font-style: italic;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 0.25rem;
+}
+
+/* Video Controls */
+.video-controls-overlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.control-btn {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.25rem;
+}
+
+.control-btn.video {
+  background: #10b981;
+  color: white;
+}
+
+.control-btn.video.disabled {
+  background: #ef4444;
+}
+
+.control-btn.audio {
+  background: #3b82f6;
+  color: white;
+}
+
+.control-btn.audio.disabled {
+  background: #ef4444;
+}
+
+.control-btn.settings {
+  background: #6b7280;
+  color: white;
+}
+
+.control-btn.leave {
+  background: #ef4444;
+  color: white;
+}
+
+.control-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Settings Panel */
+.settings-panel {
+  position: absolute;
+  bottom: 5rem;
+  right: 1rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  min-width: 16rem;
+  z-index: 100;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  background: #d1d5db;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toggle-switch.active {
+  background: #3b82f6;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle-switch.active::after {
+  transform: translateX(1.5rem);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sign-avatar-container {
+    width: 12rem;
+    height: 9rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .video-grid.dual {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  
+  .chat-panel {
+    width: 100%;
+    height: 50vh;
+  }
+  
+  .settings-panel {
+    right: 0.5rem;
+    left: 0.5rem;
+    bottom: 4rem;
+  }
+}
+
+/* Loading and Error States */
+.loading-spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid #f3f4f6;
+  border-radius: 50%;
+  border-top-color: #3b82f6;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.success-message {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
